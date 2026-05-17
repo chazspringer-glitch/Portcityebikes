@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Sign the Port City E-Bikes liability waiver. Required for every rider before each ride." />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Sign Waiver | Port City E-Bikes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Port City E-Bikes home">
+      <picture>
+        <source srcset="/logo.webp" type="image/webp">
+        <img src="/logo.png" alt="Port City E-Bikes" width="800" height="800"/>
+      </picture>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/#services">Services</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/waiver" class="active" aria-current="page">Waiver</a>
+      <a href="/#gallery">Gallery</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a href="/booking" class="btn btn-primary btn-sm nav-cta">Book Your Ride</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/#about">About</a>
+    <a href="/#services">Services</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/waiver">Waiver</a>
+    <a href="/#gallery">Gallery</a>
+    <a href="/#contact">Contact</a>
+    <a href="/booking" style="color: var(--yellow);">Book Your Ride →</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Required for every ride</div>
+    <h1>Sign The <span class="y">Waiver</span></h1>
+    <p class="lead">
+      All riders (or a parent/guardian for minors) must read and sign this waiver before riding.
+      It takes about 2 minutes.
+    </p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+    <div class="form-card">
+      <form id="waiverForm" novalidate>
+
+        <div class="terms" tabindex="0" aria-label="Waiver terms">
+          <h3>Liability Waiver &amp; Release</h3>
+          <p>
+            In consideration of being permitted to rent and/or use an electric bicycle ("e-bike")
+            and related equipment from <strong>Port City E-Bikes</strong> ("the Company"), I,
+            the undersigned rider, acknowledge and agree to the following:
+          </p>
+
+          <h3>1. Assumption of Risk</h3>
+          <p>
+            I understand that riding an e-bike involves inherent risks including but not limited to:
+            falls, collisions with other riders, pedestrians, vehicles or objects; mechanical failure;
+            road, weather, and trail conditions; and the negligence of other parties. I assume full
+            responsibility for these risks.
+          </p>
+
+          <h3>2. Release of Liability</h3>
+          <p>
+            I, on behalf of myself, my heirs and assigns, hereby release, waive, and discharge
+            Port City E-Bikes, its owners, employees, and agents from any and all liability,
+            claims, demands, or causes of action arising out of or related to any loss, damage,
+            or injury sustained while using rental equipment.
+          </p>
+
+          <h3>3. Rider Responsibilities</h3>
+          <p>
+            I agree to wear a helmet at all times, obey all North Carolina traffic laws, ride
+            sober, return the e-bike on time and in the condition received, and not operate the
+            bike while under the influence of alcohol or any impairing substance.
+          </p>
+
+          <h3>4. Age Requirement</h3>
+          <p>
+            I confirm I am at least 18 years of age, or that a parent/guardian is signing on
+            behalf of a minor rider and accepts full responsibility on the minor's behalf.
+          </p>
+
+          <h3>5. Medical Authorization</h3>
+          <p>
+            I authorize the Company to seek emergency medical care for me in the event of an
+            injury, and I accept financial responsibility for any such care.
+          </p>
+
+          <p style="margin-top:14px;font-style:italic;color:var(--gray);">
+            <strong>Note:</strong> This is placeholder waiver text. Please replace with your final
+            legal language reviewed by an attorney before going live.
+          </p>
+        </div>
+
+        <div class="form-grid two-col">
+          <div class="field">
+            <label for="riderName">Rider Name<span class="req">*</span></label>
+            <input type="text" id="riderName" name="riderName" autocomplete="name" placeholder="Full legal name" required/>
+          </div>
+          <div class="field">
+            <label for="phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(910) 555-1234" required/>
+          </div>
+          <div class="field full">
+            <label for="email">Email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required/>
+          </div>
+          <div class="field full">
+            <label for="rideDate">Date of Ride<span class="req">*</span></label>
+            <input type="date" id="rideDate" name="rideDate" required/>
+          </div>
+          <div class="field">
+            <label for="emergencyName">Emergency Contact Name<span class="req">*</span></label>
+            <input type="text" id="emergencyName" name="emergencyName" placeholder="Who should we call?" required/>
+          </div>
+          <div class="field">
+            <label for="emergencyPhone">Emergency Contact Phone<span class="req">*</span></label>
+            <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="(910) 555-1234" required/>
+          </div>
+          <div class="field full signature-field">
+            <label for="signature">Signature<span class="req">*</span></label>
+            <input type="text" id="signature" name="signature" placeholder="Type your full name to sign" required/>
+            <div class="hint">By typing your name above, you are providing your legal electronic signature.</div>
+          </div>
+          <div class="field full">
+            <label class="check">
+              <input type="checkbox" id="agree" name="agree" required/>
+              <span>
+                <strong>I have read and agree to the waiver terms above.</strong>
+                I understand the risks of riding an e-bike and release Port City E-Bikes from
+                liability as described.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-error" id="formError" role="alert">Please complete all required fields and agree to the terms.</div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            Submit Waiver
+          </button>
+          <a href="/" class="btn btn-ghost">Cancel</a>
+        </div>
+      </form>
+
+      <div class="success" id="successPanel" hidden>
+        <div class="check-icon">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2>Waiver <span class="y">Signed!</span></h2>
+        <p>Thanks — your waiver is on file. You're ready to ride. See you soon.</p>
+        <dl class="summary" id="waiverSummary"></dl>
+        <div class="form-actions" style="margin-top:0;">
+          <a href="/booking" class="btn btn-primary">Book Your Ride →</a>
+          <a href="/" class="btn btn-ghost">Back Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:none;padding:0;margin:0;">
+      <div>© <span id="year"></span> Port City E-Bikes. All rights reserved.</div>
+      <div>Powered by <span class="powered">Springer Industries</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Set min date = today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('rideDate').setAttribute('min', today);
+
+  // Form submission
+  const form = document.getElementById('waiverForm');
+  const errorBox = document.getElementById('formError');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+
+    if (!form.checkValidity()) {
+      errorBox.textContent = 'Please complete all required fields and agree to the terms.';
+      errorBox.classList.add('show');
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    // Cross-check signature ~= rider name (warn if they don't match closely)
+    const norm = s => (s || '').trim().toLowerCase().replace(/\s+/g,' ');
+    if (norm(data.signature) !== norm(data.riderName)) {
+      errorBox.textContent = 'Your signature must match the rider name exactly.';
+      errorBox.classList.add('show');
+      document.getElementById('signature').focus();
+      return;
+    }
+
+    // TODO: replace this client-side success with a real submission
+    // (POST to a Formspree endpoint, Netlify Forms, or your own /api endpoint).
+    // Persist signed waivers somewhere durable so you have a record.
+    console.log('Waiver signed (no backend yet):', data);
+
+    const rows = [
+      ['Rider', data.riderName],
+      ['Signed', data.signature],
+      ['Phone', data.phone],
+      ['Email', data.email],
+      ['Ride Date', data.rideDate],
+      ['Emergency Contact', `${data.emergencyName} (${data.emergencyPhone})`],
+      ['Signed On', new Date().toLocaleString()],
+    ];
+    document.getElementById('waiverSummary').innerHTML =
+      rows.map(([k,v]) => `<dt>${k}</dt><dd>${escapeHTML(v)}</dd>`).join('');
+
+    form.hidden = true;
+    document.getElementById('successPanel').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  function escapeHTML(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    })[c]);
+  }
+</script>
+
+</body>
+</html>

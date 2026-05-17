@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Book your Port City E-Bikes ride in Wilmington, NC. Pick a date, time, and ride type — we'll be in touch." />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Book Your Ride | Port City E-Bikes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Port City E-Bikes home">
+      <picture>
+        <source srcset="/logo.webp" type="image/webp">
+        <img src="/logo.png" alt="Port City E-Bikes" width="800" height="800"/>
+      </picture>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/#services">Services</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/waiver">Waiver</a>
+      <a href="/#gallery">Gallery</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a href="/booking" class="btn btn-primary btn-sm nav-cta active" aria-current="page">Book Your Ride</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/#about">About</a>
+    <a href="/#services">Services</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/waiver">Waiver</a>
+    <a href="/#gallery">Gallery</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Step 1 of 2 · Book</div>
+    <h1>Book Your <span class="y">Ride</span></h1>
+    <p class="lead">
+      Tell us what kind of ride and when. We'll get back to confirm within a few hours.
+      <br/>After booking, every rider will need to sign a quick <a href="/waiver" style="color:var(--yellow);">waiver</a>.
+    </p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+    <div class="form-card">
+      <form id="bookingForm" novalidate>
+        <div class="form-grid two-col">
+          <div class="field">
+            <label for="name">Full Name<span class="req">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required/>
+          </div>
+          <div class="field">
+            <label for="phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(910) 555-1234" required/>
+          </div>
+          <div class="field full">
+            <label for="email">Email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required/>
+          </div>
+          <div class="field full">
+            <label for="rideType">Ride Type<span class="req">*</span></label>
+            <select id="rideType" name="rideType" required>
+              <option value="" disabled selected>Choose a ride...</option>
+              <option value="hourly">Hourly Rental — $20/hr</option>
+              <option value="event">Event Package — $350 (5 bikes / 2 hrs)</option>
+              <option value="couples">Couples Ride</option>
+              <option value="kids">Kids Ride — Greenfield Lake</option>
+              <option value="city">City Ride — Downtown Wilmington</option>
+              <option value="custom">Custom / Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Date<span class="req">*</span></label>
+            <input type="date" id="date" name="date" required/>
+          </div>
+          <div class="field">
+            <label for="time">Time<span class="req">*</span></label>
+            <input type="time" id="time" name="time" required/>
+          </div>
+          <div class="field full">
+            <label for="riders">Number of Riders<span class="req">*</span></label>
+            <input type="number" id="riders" name="riders" min="1" max="20" placeholder="How many people?" required/>
+            <div class="hint">Minimum 1, maximum 20. For larger groups, mention it in notes.</div>
+          </div>
+          <div class="field full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Special requests, kids' ages, accessibility needs, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-error" id="formError" role="alert">Please fill in all required fields.</div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/>
+              <path d="M6 17l4-7h5l3 7M10 10l-2-4H6"/>
+            </svg>
+            Submit Booking
+          </button>
+          <a href="/" class="btn btn-ghost">Cancel</a>
+        </div>
+      </form>
+
+      <div class="success" id="successPanel" hidden>
+        <div class="check-icon">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2>Booking <span class="y">Received!</span></h2>
+        <p>Thanks — we got your request. We'll text or email you within a few hours to confirm.</p>
+        <dl class="summary" id="bookingSummary"></dl>
+        <div class="form-actions" style="margin-top:0;">
+          <a href="/waiver" class="btn btn-primary">Sign Waiver Now →</a>
+          <a href="/" class="btn btn-ghost">Back Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border:none;padding:0;margin:0;">
+      <div>© <span id="year"></span> Port City E-Bikes. All rights reserved.</div>
+      <div>Powered by <span class="powered">Springer Industries</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Pre-fill ride type from query string (e.g., /booking?ride=hourly)
+  const params = new URLSearchParams(location.search);
+  const preRide = params.get('ride');
+  if (preRide) {
+    const sel = document.getElementById('rideType');
+    if ([...sel.options].some(o => o.value === preRide)) sel.value = preRide;
+  }
+  // Set min date = today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('min', today);
+
+  // Form submission
+  const form = document.getElementById('bookingForm');
+  const errorBox = document.getElementById('formError');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+
+    if (!form.checkValidity()) {
+      errorBox.textContent = 'Please fill in all required fields.';
+      errorBox.classList.add('show');
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    // TODO: replace this client-side success with a real submission
+    // (e.g., POST to a Formspree endpoint, Netlify Forms, or your own /api endpoint).
+    // For now we just show a success panel so the customer gets immediate feedback.
+    console.log('Booking submitted (no backend yet):', data);
+
+    // Build summary
+    const labelMap = {
+      hourly: 'Hourly Rental ($20/hr)',
+      event: 'Event Package ($350)',
+      couples: 'Couples Ride',
+      kids: 'Kids Ride — Greenfield Lake',
+      city: 'City Ride — Downtown',
+      custom: 'Custom Ride'
+    };
+    const rows = [
+      ['Name', data.name],
+      ['Phone', data.phone],
+      ['Email', data.email],
+      ['Ride', labelMap[data.rideType] || data.rideType],
+      ['Date', data.date],
+      ['Time', data.time],
+      ['Riders', data.riders],
+    ];
+    if (data.notes && data.notes.trim()) rows.push(['Notes', data.notes.trim()]);
+    document.getElementById('bookingSummary').innerHTML =
+      rows.map(([k,v]) => `<dt>${k}</dt><dd>${escapeHTML(v)}</dd>`).join('');
+
+    form.hidden = true;
+    document.getElementById('successPanel').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  function escapeHTML(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    })[c]);
+  }
+</script>
+
+</body>
+</html>
