@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Port City E-Bikes — Father-and-son e-bike rentals in Wilmington, NC. Explore the city with grace n style." />
+<meta name="theme-color" content="#0a0a0a" />
+<title>Port City E-Bikes | Wilmington, NC E-Bike Rentals</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0a0a0a;
+    --black-2: #141414;
+    --black-3: #1c1c1c;
+    --yellow: #ffd60a;
+    --yellow-2: #ffb703;
+    --white: #ffffff;
+    --gray: #9a9a9a;
+    --line: rgba(255,255,255,0.08);
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --container: 1180px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.2px;
+    font-size: 22px;
+  }
+  .brand-mark {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--yellow);
+    color: var(--black);
+    display: grid; place-items: center;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+  }
+  .brand span.y { color: var(--yellow); }
+  .nav-links { display: none; gap: 26px; font-weight: 600; font-size: 14px; }
+  .nav-links a { color: #d6d6d6; transition: color .2s; }
+  .nav-links a:hover { color: var(--yellow); }
+  .nav-cta { display: none; }
+  .menu-btn {
+    background: transparent; border: 1px solid var(--line);
+    color: var(--white); padding: 8px 12px; border-radius: 10px;
+    font-size: 18px; cursor: pointer;
+  }
+  .mobile-menu {
+    display: none;
+    background: var(--black-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block;
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+    font-weight: 600;
+    color: #ddd;
+  }
+  .mobile-menu a:first-child { border-top: none; }
+
+  @media (min-width: 880px) {
+    .nav-links { display: flex; }
+    .nav-cta { display: inline-flex; }
+    .menu-btn { display: none; }
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: .3px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .15s ease, background .2s, color .2s, border-color .2s, box-shadow .2s;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    box-shadow: 0 8px 24px rgba(255,214,10,0.25);
+  }
+  .btn-primary:hover { background: var(--yellow-2); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .btn-outline:hover { background: var(--white); color: var(--black); }
+  .btn-ghost {
+    background: var(--black-3);
+    color: var(--white);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+  .btn-sm { padding: 10px 16px; font-size: 13px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    padding: 70px 0 90px;
+    overflow: hidden;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(255,214,10,0.18), transparent 60%),
+      radial-gradient(800px 400px at -10% 80%, rgba(255,214,10,0.10), transparent 60%),
+      linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(transparent 95%, rgba(255,255,255,0.04) 95%),
+      linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.04) 95%);
+    background-size: 40px 40px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,214,10,0.12);
+    color: var(--yellow);
+    border: 1px solid rgba(255,214,10,0.35);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--yellow);
+    box-shadow: 0 0 0 4px rgba(255,214,10,0.25);
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 9vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .hero h1 .y { color: var(--yellow); }
+  .slogan {
+    font-style: italic;
+    font-weight: 500;
+    color: #e7e7e7;
+    font-size: clamp(18px, 2.4vw, 22px);
+    margin-bottom: 14px;
+  }
+  .hero p.lead {
+    color: var(--gray);
+    font-size: 17px;
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 36px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .hero-stat .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 3.2;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,214,10,0.18), transparent 60%),
+      linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .hero-visual svg { width: 80%; height: auto; }
+  .hero-badge {
+    position: absolute;
+    top: 18px; left: 18px;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+  .hero-badge-2 {
+    position: absolute;
+    bottom: 18px; right: 18px;
+    background: var(--black-3);
+    border: 1px solid var(--line);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-badge-2 .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #00d26a;
+    box-shadow: 0 0 0 4px rgba(0,210,106,0.25);
+  }
+
+  @media (min-width: 960px) {
+    .hero { padding: 100px 0 120px; }
+    .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 60px; }
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 80px 0; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 50px; }
+  .section-eyebrow {
+    color: var(--yellow);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: 1px;
+    line-height: 1.05;
+  }
+  .section-sub { color: var(--gray); margin-top: 12px; font-size: 16px; }
+
+  /* ===== PRICING ===== */
+  #pricing { background: linear-gradient(180deg, #0a0a0a, #0e0e0e); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .price-card {
+    position: relative;
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: transform .25s ease, border-color .25s, box-shadow .25s;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,214,10,0.45);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+  }
+  .price-card.feature {
+    background: linear-gradient(180deg, #1a1505 0%, #0e0e0e 100%);
+    border-color: rgba(255,214,10,0.5);
+  }
+  .price-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .price-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 14px 0 10px;
+  }
+  .price-amount .amt {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .price-amount .unit { color: var(--gray); font-size: 14px; font-weight: 600; }
+  .price-desc { color: #c4c4c4; font-size: 14px; margin-bottom: 18px; min-height: 42px; }
+  .price-list { list-style: none; margin: 0 0 22px; }
+  .price-list li {
+    color: #d8d8d8;
+    font-size: 14px;
+    padding: 6px 0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .price-list li::before {
+    content: "✓";
+    color: var(--yellow);
+    font-weight: 800;
+  }
+  .price-cta { width: 100%; }
+
+  @media (min-width: 720px) {
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1040px) {
+    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ===== ABOUT ===== */
+  #about {
+    background:
+      radial-gradient(800px 400px at 100% 0%, rgba(255,214,10,0.08), transparent 60%),
+      #0a0a0a;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .about-card {
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px;
+  }
+  .about-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .about-title .y { color: var(--yellow); }
+  .about p { color: #cccccc; margin-bottom: 14px; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .about-stat {
+    background: var(--black-3);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .about-stat .n {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--yellow);
+    font-size: 26px;
+    line-height: 1;
+  }
+  .about-stat .l {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--gray);
+  }
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 1fr 1.05fr; gap: 60px; }
+  }
+
+  /* ===== SERVICES ===== */
+  #services {
+    background: linear-gradient(180deg, #0a0a0a, #0e0e0e);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .service-card {
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+    transition: transform .2s, border-color .2s;
+  }
+  .service-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,214,10,0.4);
+  }
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(255,214,10,0.12);
+    color: var(--yellow);
+    display: grid; place-items: center;
+    margin-bottom: 16px;
+  }
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .service-card p { color: #c4c4c4; font-size: 14.5px; }
+  @media (min-width: 700px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1040px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ===== HOW IT WORKS ===== */
+  #how {
+    background:
+      radial-gradient(1000px 500px at 0% 100%, rgba(255,214,10,0.08), transparent 60%),
+      #0a0a0a;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    counter-reset: step;
+  }
+  .step {
+    position: relative;
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 26px 26px;
+  }
+  .step .step-num {
+    position: absolute;
+    top: -18px; left: 26px;
+    width: 44px; height: 44px;
+    background: var(--yellow);
+    color: var(--black);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    box-shadow: 0 8px 18px rgba(255,214,10,0.3);
+  }
+  .step h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin: 8px 0 8px;
+  }
+  .step p { color: #c4c4c4; font-size: 14.5px; }
+  @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ===== SAFETY ===== */
+  #safety {
+    background: linear-gradient(180deg, #0a0a0a, #0e0e0e);
+  }
+  .safety-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+  .safety-points {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+  }
+  .safety-points li {
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--yellow);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: #d6d6d6;
+    font-size: 14.5px;
+  }
+  .safety-points li strong { color: var(--white); }
+  .waiver-card {
+    background: linear-gradient(180deg, #1a1505 0%, #0f0f0f 100%);
+    border: 1px solid rgba(255,214,10,0.35);
+    border-radius: var(--radius);
+    padding: 30px;
+    text-align: center;
+  }
+  .waiver-card .big-icon {
+    width: 72px; height: 72px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--black);
+    display: grid; place-items: center;
+  }
+  .waiver-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .waiver-card p { color: #cfcfcf; margin-bottom: 20px; }
+  @media (min-width: 900px) { .safety-grid { grid-template-columns: 1.1fr 1fr; gap: 50px; } }
+
+  /* ===== CONTACT ===== */
+  #contact {
+    background:
+      radial-gradient(900px 400px at 50% 0%, rgba(255,214,10,0.15), transparent 60%),
+      #0a0a0a;
+    text-align: center;
+  }
+  .contact-box {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--black-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 40px 26px;
+  }
+  .contact-box h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: 1px;
+    line-height: 1.05;
+  }
+  .contact-box h2 .y { color: var(--yellow); }
+  .contact-box p { color: #c8c8c8; margin: 14px 0 26px; font-size: 16px; }
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .contact-meta {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    color: #d2d2d2;
+    font-size: 14px;
+  }
+  .contact-meta div { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .contact-meta .y { color: var(--yellow); }
+  @media (min-width: 640px) {
+    .contact-meta { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #050505;
+    border-top: 1px solid var(--line);
+    padding: 40px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+  .footer-brand .brand { margin-bottom: 12px; }
+  .footer p, .footer a { color: #b5b5b5; font-size: 14px; }
+  .footer a:hover { color: var(--yellow); }
+  .footer-col h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .footer-col ul { list-style: none; display: grid; gap: 8px; }
+  .socials { display: flex; gap: 10px; margin-top: 10px; }
+  .socials a {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: var(--black-3);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .socials a:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+  .footer-bottom {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    color: #8a8a8a;
+    font-size: 13px;
+  }
+  .footer-bottom .powered {
+    color: var(--yellow);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  @media (min-width: 800px) {
+    .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+  }
+
+  /* ===== ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Focus states */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand" aria-label="Port City E-Bikes home">
+      <span class="brand-mark">PC</span>
+      <span>PORT CITY <span class="y">E-BIKES</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#safety">Safety</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book Your Ride</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#safety">Safety</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" style="color: var(--yellow);">Book Your Ride →</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> Wilmington, NC · Family Owned</span>
+      <h1>RIDE THE <span class="y">PORT CITY</span><br/>YOUR WAY.</h1>
+      <p class="slogan">"Explore the city with grace n style."</p>
+      <p class="lead">
+        Premium electric bike rentals from a father-and-son team in the heart of Wilmington.
+        Cruise downtown, hit the Riverwalk, or roll out to Greenfield Lake — we'll set you up right.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book Your Ride →</a>
+        <a href="#how" class="btn btn-outline">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">$20</div>
+          <div class="label">Per Hour</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">5</div>
+          <div class="label">Bike Group Deal</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">100%</div>
+          <div class="label">Local & Family Owned</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <span class="hero-badge">★ Top Rated</span>
+      <!-- inline SVG e-bike illustration -->
+      <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="frame" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffd60a"/>
+            <stop offset="1" stop-color="#ffb703"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(255,214,10,0.35)"/>
+            <stop offset="1" stop-color="rgba(255,214,10,0)"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="300" cy="320" rx="240" ry="22" fill="url(#glow)"/>
+        <!-- wheels -->
+        <circle cx="150" cy="270" r="70" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <circle cx="150" cy="270" r="58" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+        <circle cx="150" cy="270" r="10" fill="#ffd60a"/>
+        <circle cx="450" cy="270" r="70" fill="none" stroke="#ffffff" stroke-width="6"/>
+        <circle cx="450" cy="270" r="58" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+        <circle cx="450" cy="270" r="10" fill="#ffd60a"/>
+        <!-- spokes -->
+        <g stroke="#777" stroke-width="2">
+          <line x1="150" y1="200" x2="150" y2="340"/>
+          <line x1="80" y1="270" x2="220" y2="270"/>
+          <line x1="100" y1="220" x2="200" y2="320"/>
+          <line x1="200" y1="220" x2="100" y2="320"/>
+        </g>
+        <g stroke="#777" stroke-width="2">
+          <line x1="450" y1="200" x2="450" y2="340"/>
+          <line x1="380" y1="270" x2="520" y2="270"/>
+          <line x1="400" y1="220" x2="500" y2="320"/>
+          <line x1="500" y1="220" x2="400" y2="320"/>
+        </g>
+        <!-- frame -->
+        <path d="M150 270 L290 160 L430 270" stroke="url(#frame)" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <path d="M290 160 L450 270" stroke="url(#frame)" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <path d="M290 160 L260 100" stroke="url(#frame)" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <!-- battery -->
+        <rect x="240" y="200" width="120" height="28" rx="6" fill="#1c1c1c" stroke="#ffd60a" stroke-width="2"/>
+        <rect x="250" y="208" width="20" height="12" fill="#ffd60a"/>
+        <rect x="275" y="208" width="20" height="12" fill="#ffd60a"/>
+        <rect x="300" y="208" width="20" height="12" fill="#ffd60a"/>
+        <!-- seat -->
+        <path d="M420 250 L470 240 L460 258 Z" fill="#fff"/>
+        <!-- handlebar -->
+        <path d="M240 90 L280 110 L240 130" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <!-- pedal -->
+        <circle cx="300" cy="270" r="20" fill="#1c1c1c" stroke="#ffd60a" stroke-width="3"/>
+        <rect x="280" y="266" width="40" height="8" rx="2" fill="#ffd60a"/>
+      </svg>
+      <div class="hero-badge-2"><span class="pulse"></span> Bikes available today</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Pricing</div>
+      <h2 class="section-title">Simple Rates. <span style="color:var(--yellow)">Big Adventures.</span></h2>
+      <p class="section-sub">Solo, with your crew, or the whole family — we've got a ride for you.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tag">Most Popular</div>
+        <div class="price-name">Hourly Rental</div>
+        <div class="price-amount"><span class="amt">$20</span><span class="unit">/ hour</span></div>
+        <p class="price-desc">Hop on, ride out. Perfect for a quick city tour or a sunset cruise.</p>
+        <ul class="price-list">
+          <li>Premium e-bike</li>
+          <li>Helmet included</li>
+          <li>Quick orientation</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary price-cta">Book Now</a>
+      </div>
+
+      <div class="price-card feature reveal">
+        <div class="price-tag">Group Deal</div>
+        <div class="price-name">5 Bikes · 2 Hours</div>
+        <div class="price-amount"><span class="amt">$350</span><span class="unit">flat</span></div>
+        <p class="price-desc">Bring the squad. Five bikes, two hours, one unforgettable ride.</p>
+        <ul class="price-list">
+          <li>5 premium e-bikes</li>
+          <li>2 full hours</li>
+          <li>All helmets included</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary price-cta">Book the Group</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-tag">Romantic</div>
+        <div class="price-name">Couples Ride</div>
+        <div class="price-amount"><span class="amt">2</span><span class="unit">bikes · custom time</span></div>
+        <p class="price-desc">A perfect date — Riverwalk, sunset, and an easy glide back home.</p>
+        <ul class="price-list">
+          <li>Two matched e-bikes</li>
+          <li>Route recommendations</li>
+          <li>Sunset timing available</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost price-cta">Plan Our Ride</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-tag">Family</div>
+        <div class="price-name">Kids Rides · Greenfield Lake</div>
+        <div class="price-amount"><span class="amt">All Ages</span></div>
+        <p class="price-desc">Safe, scenic loops around Greenfield Lake — built for the whole family.</p>
+        <ul class="price-list">
+          <li>Family-friendly route</li>
+          <li>Smaller bikes available</li>
+          <li>Helmets for kids</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost price-cta">Book Family Ride</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-tag">Local Favorite</div>
+        <div class="price-name">City Rides</div>
+        <div class="price-amount"><span class="amt">Downtown</span></div>
+        <p class="price-desc">Tour historic Wilmington, the Riverwalk, and the best local spots.</p>
+        <ul class="price-list">
+          <li>Curated city routes</li>
+          <li>Local tips & stops</li>
+          <li>Solo or group friendly</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost price-cta">Hit the City</a>
+      </div>
+
+      <div class="price-card reveal" style="display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,#ffd60a,#ffb703);color:var(--black);border-color:var(--yellow);">
+        <div>
+          <div class="price-name" style="color:var(--black);">Need Something Custom?</div>
+          <p style="color:#1c1c1c;font-size:14px;margin:10px 0 18px;">Birthdays, bachelor/bachelorette, tours, corporate outings — we'll build it.</p>
+        </div>
+        <a href="#contact" class="btn" style="background:var(--black);color:var(--yellow);">Talk to Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">About Us</div>
+      <h2 class="about-title">A Father & Son Built On Two <span class="y">Wheels.</span></h2>
+      <p>
+        Port City E-Bikes is a homegrown Wilmington operation — just a dad, his son, and a fleet of
+        premium electric bikes built to show off the best of the Port City.
+      </p>
+      <p>
+        We started this because we love this town. The Riverwalk at golden hour. The quiet loops
+        around Greenfield Lake. The hidden corners of downtown most people miss. An e-bike is the
+        best way to see it all — and we'll make sure your ride is smooth, safe, and stylish.
+      </p>
+      <div class="about-stats">
+        <div class="about-stat"><div class="n">100%</div><div class="l">Local</div></div>
+        <div class="about-stat"><div class="n">⭐ 5</div><div class="l">Star Service</div></div>
+        <div class="about-stat"><div class="n">2 Gen</div><div class="l">Family Team</div></div>
+      </div>
+    </div>
+
+    <div class="about-card reveal">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;margin-bottom:14px;">Why Ride With Us</h3>
+      <ul style="list-style:none;display:grid;gap:14px;">
+        <li style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="flex:0 0 32px;height:32px;border-radius:8px;background:rgba(255,214,10,0.15);color:var(--yellow);display:grid;place-items:center;font-weight:800;">⚡</span>
+          <div><strong>Premium e-bikes</strong><div style="color:#bbb;font-size:14px;">Powerful motors, long-range batteries, comfortable rides.</div></div>
+        </li>
+        <li style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="flex:0 0 32px;height:32px;border-radius:8px;background:rgba(255,214,10,0.15);color:var(--yellow);display:grid;place-items:center;font-weight:800;">🛡️</span>
+          <div><strong>Safety first</strong><div style="color:#bbb;font-size:14px;">Helmets, walkthroughs, and waiver-signed every ride.</div></div>
+        </li>
+        <li style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="flex:0 0 32px;height:32px;border-radius:8px;background:rgba(255,214,10,0.15);color:var(--yellow);display:grid;place-items:center;font-weight:800;">📍</span>
+          <div><strong>Local expertise</strong><div style="color:#bbb;font-size:14px;">We'll show you where to go — Riverwalk, Greenfield, downtown.</div></div>
+        </li>
+        <li style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="flex:0 0 32px;height:32px;border-radius:8px;background:rgba(255,214,10,0.15);color:var(--yellow);display:grid;place-items:center;font-weight:800;">❤️</span>
+          <div><strong>Family run</strong><div style="color:#bbb;font-size:14px;">You're not a number to us — you're part of the ride.</div></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Services</div>
+      <h2 class="section-title">What We <span style="color:var(--yellow)">Offer</span></h2>
+      <p class="section-sub">From quick rentals to full-on group adventures.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="17" r="4"/><circle cx="18" cy="17" r="4"/><path d="M6 17l4-7h6l2 7M10 10l-2-4h-2"/></svg>
+        </div>
+        <h3>E-Bike Rentals</h3>
+        <p>Top-quality electric bikes ready to roll — hourly or by the day.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        </div>
+        <h3>Guided City Tours</h3>
+        <p>Let us show you Wilmington — Riverwalk, downtown, and hidden gems.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Group & Events</h3>
+        <p>Bachelorette parties, birthdays, corporate outings — we'll handle it.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Lake Loops</h3>
+        <p>Family-friendly rides around Greenfield Lake — perfect for kids.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="section-title">Three Steps. <span style="color:var(--yellow)">One Great Ride.</span></h2>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Book</h3>
+        <p>Call, text, or message us. Tell us when, how many, and what kind of ride you want.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Sign Waiver</h3>
+        <p>Quick electronic waiver and a short safety walk-through. We'll fit your helmet, too.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Ride</h3>
+        <p>Power up and roll out. The Port City is yours — go explore with grace n style.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:36px;" class="reveal">
+      <a href="#contact" class="btn btn-primary">Start Your Booking →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAFETY ============ -->
+<section id="safety">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Safety</div>
+      <h2 class="section-title">Ride Smart. <span style="color:var(--yellow)">Ride Safe.</span></h2>
+      <p class="section-sub">Your safety is our top priority — every rider, every ride.</p>
+    </div>
+
+    <div class="safety-grid">
+      <ul class="safety-points reveal">
+        <li><strong>Helmets always included</strong> — fitted before you roll.</li>
+        <li><strong>Safety walk-through</strong> — bike controls, brakes, and motor assist explained.</li>
+        <li><strong>Route recommendations</strong> — safer paths and trails over busy traffic.</li>
+        <li><strong>Riders must be 18+</strong> to operate. Kids welcome with adult supervision.</li>
+        <li><strong>Sober riding only.</strong> No riding under the influence of alcohol or drugs.</li>
+        <li><strong>Follow all NC traffic laws</strong> — e-bikes follow the same rules as bicycles.</li>
+      </ul>
+
+      <div class="waiver-card reveal">
+        <div class="big-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Sign The Waiver</h3>
+        <p>All riders must sign a quick liability waiver before every rental. Takes about 2 minutes — we'll send you the link when you book.</p>
+        <a href="#contact" class="btn btn-primary">Sign Waiver</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <h2>Ready To <span class="y">Ride?</span></h2>
+      <p>Book your e-bike in seconds. Call, text, or message us — we usually respond within minutes.</p>
+      <div class="contact-actions">
+        <a href="tel:+19105555555" class="btn btn-primary">📞 Call Now</a>
+        <a href="#" class="btn btn-outline">Book Your Ride</a>
+        <a href="#" class="btn btn-ghost">Sign Waiver</a>
+      </div>
+      <div class="contact-meta">
+        <div><span class="y">📍</span> Wilmington, NC</div>
+        <div><span class="y">📞</span> <a href="tel:+19105555555">(910) 555-5555</a></div>
+        <div><span class="y">✉️</span> <a href="mailto:hello@portcityebikes.com">hello@portcityebikes.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand">
+          <span class="brand-mark">PC</span>
+          <span>PORT CITY <span class="y">E-BIKES</span></span>
+        </a>
+        <p style="margin-top:10px;">Father-and-son e-bike rentals in Wilmington, NC. <em>"Explore the city with grace n style."</em></p>
+        <div class="socials" aria-label="Social media">
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5v1.9h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="tel:+19105555555" aria-label="Phone" title="Call us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#safety">Safety</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Wilmington, NC</li>
+          <li><a href="tel:+19105555555">(910) 555-5555</a></li>
+          <li><a href="mailto:hello@portcityebikes.com">hello@portcityebikes.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="#contact">Book Your Ride</a></li>
+          <li><a href="#contact">Sign Waiver</a></li>
+          <li><a href="tel:+19105555555">Call Now</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Port City E-Bikes. All rights reserved.</div>
+      <div>Powered by <span class="powered">Springer Industries</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? '✕' : '☰';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
