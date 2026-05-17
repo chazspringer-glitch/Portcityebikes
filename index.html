@@ -53,34 +53,15 @@
   .logo {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    line-height: 0;
   }
-  .logo-mark {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ffd54f, #ffb300 60%, #ff9800);
-    display: grid; place-items: center;
-    box-shadow: 0 4px 16px rgba(255,179,0,0.35), inset 0 -2px 6px rgba(0,0,0,0.25);
-    flex-shrink: 0;
+  .logo img {
+    height: 56px;
+    width: auto;
+    display: block;
   }
-  .logo-mark svg { width: 32px; height: 32px; }
-  .logo-text {
-    display: flex; flex-direction: column;
-    line-height: 1;
-  }
-  .logo-text .l1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    color: var(--white);
-  }
-  .logo-text .l2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: var(--yellow);
-    margin-top: 2px;
-  }
+  .logo.lg img { height: 96px; }
+  .logo.xl img { height: 140px; }
 
   /* ===== NAV ===== */
   .nav {
@@ -871,20 +852,10 @@
 <header class="nav">
   <div class="container nav-inner">
     <a href="#home" class="logo" aria-label="Port City E-Bikes home">
-      <span class="logo-mark" aria-hidden="true">
-        <!-- Logo: simplified e-bike silhouette in a yellow disc -->
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="22" r="5"/>
-          <circle cx="23" cy="22" r="5"/>
-          <path d="M9 22 L16 12 L23 22"/>
-          <path d="M16 12 L13 7"/>
-          <path d="M19 11 L22 13"/>
-        </svg>
-      </span>
-      <span class="logo-text">
-        <span class="l1">PORT CITY</span>
-        <span class="l2">E-BIKES</span>
-      </span>
+      <picture>
+        <source srcset="logo.webp" type="image/webp">
+        <img src="logo.png" alt="Port City E-Bikes" width="800" height="800" fetchpriority="high"/>
+      </picture>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -1823,20 +1794,11 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <a href="#home" class="logo" style="margin-bottom: 12px;">
-          <span class="logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9" cy="22" r="5"/>
-              <circle cx="23" cy="22" r="5"/>
-              <path d="M9 22 L16 12 L23 22"/>
-              <path d="M16 12 L13 7"/>
-              <path d="M19 11 L22 13"/>
-            </svg>
-          </span>
-          <span class="logo-text">
-            <span class="l1">FATHER &amp; SON</span>
-            <span class="l2">E-BIKE RENTAL SERVICE</span>
-          </span>
+        <a href="#home" class="logo lg" style="margin-bottom: 14px;display:inline-block;">
+          <picture>
+            <source srcset="logo.webp" type="image/webp">
+            <img src="logo.png" alt="Port City E-Bikes" width="800" height="800" loading="lazy"/>
+          </picture>
         </a>
         <div class="socials" aria-label="Social media">
           <a href="https://www.facebook.com/share/18iLfyKgQp/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
