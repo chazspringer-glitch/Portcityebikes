@@ -153,9 +153,49 @@
     padding: 70px 0 90px;
     overflow: hidden;
     background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(255,214,10,0.18), transparent 60%),
-      radial-gradient(800px 400px at -10% 80%, rgba(255,214,10,0.10), transparent 60%),
-      linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+      linear-gradient(180deg,
+        #1a0e02 0%,
+        #2a1505 18%,
+        #4d2410 40%,
+        #2a1505 70%,
+        #0a0a0a 100%);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-bg svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1600px;
+    max-width: none;
+    height: auto;
+  }
+  /* sun glow */
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 28%;
+    transform: translateX(-50%);
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(255,214,10,0.55) 0%, rgba(255,150,30,0.25) 30%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(8px);
+  }
+  /* dark overlay so text stays readable */
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.25) 30%, rgba(10,10,10,0.6) 80%, rgba(10,10,10,0.95) 100%),
+      linear-gradient(90deg, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.45) 100%);
   }
   .hero::before {
     content: "";
@@ -166,7 +206,9 @@
     background-size: 40px 40px;
     pointer-events: none;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    z-index: 1;
   }
+  .hero .container { position: relative; z-index: 2; }
   .hero-grid {
     position: relative;
     display: grid;
@@ -715,6 +757,160 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
+  <!-- Cape Fear Memorial Bridge silhouette at sunset.
+       To swap for a real photo, replace this <div class="hero-bg">...</div>
+       with: <div class="hero-bg" style="background:url('YOUR_PHOTO_URL') center/cover no-repeat;"></div>
+       Keep the ::after dark-overlay rule in CSS so text remains readable. -->
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1600 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYEnd meet">
+      <defs>
+        <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#3a1d0a"/>
+          <stop offset="0.5" stop-color="#1a0e05"/>
+          <stop offset="1" stop-color="#0a0a0a"/>
+        </linearGradient>
+        <linearGradient id="bridge" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#0a0a0a"/>
+          <stop offset="1" stop-color="#1a0e05"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Far skyline / shoreline silhouette -->
+      <path d="M0 430
+               L80 425 L140 420 L200 422 L260 415 L320 418 L380 410
+               L440 412 L500 405 L560 408 L620 402 L680 405
+               L740 400 L800 402 L860 398 L920 400 L980 395
+               L1040 398 L1100 392 L1160 395 L1220 390 L1280 392
+               L1340 388 L1400 390 L1460 385 L1520 388 L1600 385
+               L1600 600 L0 600 Z"
+            fill="#0e0703" opacity="0.9"/>
+
+      <!-- Tiny city buildings to the right of the bridge -->
+      <g fill="#080503" opacity="0.95">
+        <rect x="1100" y="395" width="22" height="38"/>
+        <rect x="1128" y="385" width="18" height="48"/>
+        <rect x="1152" y="400" width="26" height="33"/>
+        <rect x="1184" y="378" width="20" height="55"/>
+        <rect x="1210" y="392" width="24" height="41"/>
+        <rect x="1240" y="400" width="18" height="33"/>
+      </g>
+
+      <!-- Water -->
+      <rect x="0" y="430" width="1600" height="170" fill="url(#water)"/>
+
+      <!-- Subtle water reflection lines -->
+      <g stroke="rgba(255,180,80,0.15)" stroke-width="1" fill="none">
+        <line x1="200" y1="465" x2="350" y2="465"/>
+        <line x1="600" y1="475" x2="780" y2="475"/>
+        <line x1="900" y1="470" x2="1080" y2="470"/>
+        <line x1="1200" y1="485" x2="1400" y2="485"/>
+      </g>
+
+      <!-- ===== Cape Fear Memorial Bridge ===== -->
+      <!-- Left approach span -->
+      <rect x="0" y="350" width="500" height="6" fill="url(#bridge)"/>
+      <!-- Left approach piers -->
+      <g fill="url(#bridge)">
+        <rect x="80" y="356" width="8" height="80"/>
+        <rect x="200" y="356" width="8" height="80"/>
+        <rect x="320" y="356" width="8" height="80"/>
+        <rect x="440" y="356" width="8" height="80"/>
+      </g>
+
+      <!-- Main lift span deck (raised) -->
+      <rect x="600" y="305" width="400" height="8" fill="url(#bridge)"/>
+
+      <!-- Vertical-lift towers (left) -->
+      <g fill="url(#bridge)">
+        <!-- Left tower legs -->
+        <polygon points="595,130 605,130 612,360 588,360"/>
+        <polygon points="640,130 650,130 657,360 633,360"/>
+        <!-- Left tower top crossbeam -->
+        <rect x="585" y="125" width="75" height="10"/>
+        <rect x="585" y="155" width="75" height="5"/>
+        <!-- Lattice diagonals -->
+      </g>
+      <g stroke="#0a0a0a" stroke-width="2" fill="none" opacity="0.95">
+        <line x1="600" y1="135" x2="650" y2="170"/>
+        <line x1="650" y1="135" x2="600" y2="170"/>
+        <line x1="600" y1="180" x2="650" y2="215"/>
+        <line x1="650" y1="180" x2="600" y2="215"/>
+        <line x1="600" y1="225" x2="650" y2="260"/>
+        <line x1="650" y1="225" x2="600" y2="260"/>
+        <line x1="600" y1="270" x2="650" y2="305"/>
+        <line x1="650" y1="270" x2="600" y2="305"/>
+        <line x1="600" y1="315" x2="650" y2="350"/>
+        <line x1="650" y1="315" x2="600" y2="350"/>
+      </g>
+
+      <!-- Vertical-lift towers (right) -->
+      <g fill="url(#bridge)">
+        <polygon points="945,130 955,130 962,360 938,360"/>
+        <polygon points="990,130 1000,130 1007,360 983,360"/>
+        <rect x="935" y="125" width="75" height="10"/>
+        <rect x="935" y="155" width="75" height="5"/>
+      </g>
+      <g stroke="#0a0a0a" stroke-width="2" fill="none" opacity="0.95">
+        <line x1="950" y1="135" x2="1000" y2="170"/>
+        <line x1="1000" y1="135" x2="950" y2="170"/>
+        <line x1="950" y1="180" x2="1000" y2="215"/>
+        <line x1="1000" y1="180" x2="950" y2="215"/>
+        <line x1="950" y1="225" x2="1000" y2="260"/>
+        <line x1="1000" y1="225" x2="950" y2="260"/>
+        <line x1="950" y1="270" x2="1000" y2="305"/>
+        <line x1="1000" y1="270" x2="950" y2="305"/>
+        <line x1="950" y1="315" x2="1000" y2="350"/>
+        <line x1="1000" y1="315" x2="950" y2="350"/>
+      </g>
+
+      <!-- Lift cables from tower tops to lift-span corners -->
+      <g stroke="#0a0a0a" stroke-width="3" fill="none">
+        <line x1="620" y1="135" x2="610" y2="305"/>
+        <line x1="980" y1="135" x2="990" y2="305"/>
+      </g>
+
+      <!-- Lift span truss -->
+      <g fill="url(#bridge)">
+        <rect x="600" y="295" width="400" height="6"/>
+        <rect x="600" y="313" width="400" height="3"/>
+      </g>
+      <g stroke="#0a0a0a" stroke-width="2" fill="none">
+        <line x1="610" y1="313" x2="640" y2="298"/>
+        <line x1="640" y1="313" x2="670" y2="298"/>
+        <line x1="670" y1="313" x2="700" y2="298"/>
+        <line x1="700" y1="313" x2="730" y2="298"/>
+        <line x1="730" y1="313" x2="760" y2="298"/>
+        <line x1="760" y1="313" x2="790" y2="298"/>
+        <line x1="790" y1="313" x2="820" y2="298"/>
+        <line x1="820" y1="313" x2="850" y2="298"/>
+        <line x1="850" y1="313" x2="880" y2="298"/>
+        <line x1="880" y1="313" x2="910" y2="298"/>
+        <line x1="910" y1="313" x2="940" y2="298"/>
+        <line x1="940" y1="313" x2="970" y2="298"/>
+        <line x1="970" y1="313" x2="990" y2="298"/>
+      </g>
+
+      <!-- Right approach span -->
+      <rect x="1000" y="350" width="600" height="6" fill="url(#bridge)"/>
+      <g fill="url(#bridge)">
+        <rect x="1080" y="356" width="8" height="80"/>
+        <rect x="1200" y="356" width="8" height="80"/>
+        <rect x="1320" y="356" width="8" height="80"/>
+        <rect x="1440" y="356" width="8" height="80"/>
+        <rect x="1560" y="356" width="8" height="80"/>
+      </g>
+
+      <!-- Bridge reflection in water -->
+      <g opacity="0.18">
+        <rect x="0" y="438" width="500" height="3" fill="#ffd60a"/>
+        <rect x="600" y="438" width="400" height="3" fill="#ffd60a"/>
+        <rect x="1000" y="438" width="600" height="3" fill="#ffd60a"/>
+        <rect x="595" y="438" width="65" height="60" fill="#ffd60a"/>
+        <rect x="935" y="438" width="65" height="60" fill="#ffd60a"/>
+      </g>
+    </svg>
+  </div>
+
   <div class="container hero-grid">
     <div class="reveal">
       <span class="eyebrow"><span class="dot"></span> Wilmington, NC · Family Owned</span>
